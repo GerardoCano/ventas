@@ -1,0 +1,45 @@
+<?php
+$title = 'Agregar nuevo álbum';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<?php
+
+//Agrega un estilo predeterminado de CSS y un placeholder para el titulo del álbum
+$album = $form->get('title');
+$album->setAttribute('class', 'form-control');
+$album->setAttribute('placeholder', 'Album title');
+
+// Agrega un estilo predeterminado de CSS y un placeholder para el artista del álbum
+$artist = $form->get('artist');
+$artist->setAttribute('class', 'form-control');
+$artist->setAttribute('placeholder', 'Artist');
+
+// Agrega un estilo CSS al botón de enviar
+$submit = $form->get('submit');
+$submit->setAttribute('class', 'btn btn-primary');
+
+$form->setAttribute('action', $this->url('album', ['action' => 'add']));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+?>
+
+<?php // Wrap the elements in divs marked as form groups, and render the
+      // label, element, and errors separately within ?>
+<div class="form-group">
+    <?= $this->formLabel($album) ?>
+    <?= $this->formElement($album) ?>
+    <?= $this->formElementErrors()->render($album, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($artist) ?>
+    <?= $this->formElement($artist) ?>
+    <?= $this->formElementErrors()->render($artist, ['class' => 'help-block']) ?>
+</div>
+
+<?php
+echo $this->formSubmit($submit);
+echo $this->formHidden($form->get('id'));
+echo $this->form()->closeTag();

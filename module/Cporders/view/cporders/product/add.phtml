@@ -1,0 +1,88 @@
+<?php
+
+$title = 'Add new Product';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<?php
+
+// This provides a default CSS class and placeholder text for the title element:
+$p_name = $form->get('p_name');
+$p_name->setAttribute('class', 'form-control');
+$p_name->setAttribute('placeholder', 'Product Name');
+
+// This provides a default CSS class and placeholder text for the artist element:
+$in_stock = $form->get('in_stock');
+$in_stock->setAttribute('class', 'form-control');
+
+// This provides a default CSS class and placeholder text for the artist element:
+$units_in_stock = $form->get('units_in_stock');
+$units_in_stock->setAttribute('class', 'form-control');
+$units_in_stock->setAttribute('placeholder', 'Units in stock');
+
+// This provides a default CSS class and placeholder text for the artist element:
+$unit_purchase_price = $form->get('unit_purchase_price');
+$unit_purchase_price->setAttribute('class', 'form-control');
+$unit_purchase_price->setAttribute('placeholder', 'Unit purchase price');
+
+// This provides a default CSS class and placeholder text for the artist element:
+$unit_sale_price = $form->get('unit_sale_price');
+$unit_sale_price->setAttribute('class', 'form-control');
+$unit_sale_price->setAttribute('placeholder', 'Unit sale price');
+
+// This provides a default CSS class and placeholder text for the artist element:
+$sp_id = $form->get('sp_id');
+$sp_id->setAttribute('class', 'form-control');
+
+// This provides CSS classes for the submit button:
+$submit = $form->get('submit');
+$submit->setAttribute('class', 'btn btn-primary');
+
+$form->setAttribute('action', $this->url('product', ['action' => 'add']));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+?>
+<?php // Wrap the elements in divs marked as form groups, and render the
+      // label, element, and errors separately within ?>
+
+<div class="form-group">
+    <?= $this->formLabel($p_name) ?>
+    <?= $this->formElement($p_name) ?>
+    <?= $this->formElementErrors()->render($p_name, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($in_stock) ?>
+    <?= $this->formElement($in_stock) ?>
+    <?= $this->formElementErrors()->render($in_stock, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($units_in_stock) ?>
+    <?= $this->formElement($units_in_stock) ?>
+    <?= $this->formElementErrors()->render($units_in_stock, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($unit_purchase_price) ?>
+    <?= $this->formElement($unit_purchase_price) ?>
+    <?= $this->formElementErrors()->render($unit_purchase_price, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($unit_sale_price) ?>
+    <?= $this->formElement($unit_sale_price) ?>
+    <?= $this->formElementErrors()->render($unit_sale_price, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($sp_id) ?>
+    <?= $this->formElement($sp_id) ?>
+    <?= $this->formElementErrors()->render($sp_id, ['class' => 'help-block']) ?>
+</div>
+
+<?php
+echo $this->formSubmit($submit);
+echo $this->formHidden($form->get('p_id'));
+echo $this->form()->closeTag();

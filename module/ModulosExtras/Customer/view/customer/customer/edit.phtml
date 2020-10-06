@@ -1,0 +1,101 @@
+<?php
+// module/Album/view/album/album/edit.phtml:
+
+$title = 'Edit Customer';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<?php
+
+// This provides a default CSS class and placeholder text for the title element:
+$first_name = $form->get('first_name');
+$first_name->setAttribute('class', 'form-control');
+$first_name->setAttribute('placeholder', 'Customer First Name');
+
+// This provides a default CSS class and placeholder text for the title element:
+$last_name = $form->get('last_name');
+$last_name->setAttribute('class', 'form-control');
+$last_name->setAttribute('placeholder', 'Customer Last Name');
+
+// This provides a default CSS class and placeholder text for the artist element:
+$address_street = $form->get('address_street');
+$address_street->setAttribute('class', 'form-control');
+$address_street->setAttribute('placeholder', 'Supplier Address Street');
+
+// This provides a default CSS class and placeholder text for the artist element:
+$address_city = $form->get('address_city');
+$address_city->setAttribute('class', 'form-control');
+$address_city->setAttribute('placeholder', 'Supplier Address City');
+
+// This provides a default CSS class and placeholder text for the artist element:
+$address_country = $form->get('address_country');
+$address_country->setAttribute('class', 'form-control');
+$address_country->setAttribute('placeholder', 'Supplier Address Country');
+
+// This provides a default CSS class and placeholder text for the artist element:
+$address_post_code = $form->get('address_post_code');
+$address_post_code->setAttribute('class', 'form-control');
+$address_post_code->setAttribute('placeholder', 'Supplier Post Code');
+
+// This provides a default CSS class and placeholder text for the artist element:
+$contact_phone_no = $form->get('contact_phone_no');
+$contact_phone_no->setAttribute('class', 'form-control');
+$contact_phone_no->setAttribute('placeholder', 'Contact Phone Number');
+
+$submit = $form->get('submit');
+$submit->setAttribute('class', 'btn btn-primary');
+
+$form->setAttribute('action', $this->url('customer', [
+    'action' => 'edit',
+    'id'     => $id,
+]));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+?>
+<div class="form-group">
+    <?= $this->formLabel($first_name) ?>
+    <?= $this->formElement($first_name) ?>
+    <?= $this->formElementErrors()->render($first_name, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($last_name) ?>
+    <?= $this->formElement($last_name) ?>
+    <?= $this->formElementErrors()->render($last_name, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($address_street) ?>
+    <?= $this->formElement($address_street) ?>
+    <?= $this->formElementErrors()->render($address_street, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($address_city) ?>
+    <?= $this->formElement($address_city) ?>
+    <?= $this->formElementErrors()->render($address_city, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($address_country) ?>
+    <?= $this->formElement($address_country) ?>
+    <?= $this->formElementErrors()->render($address_country, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($address_post_code) ?>
+    <?= $this->formElement($address_post_code) ?>
+    <?= $this->formElementErrors()->render($address_post_code, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($contact_phone_no) ?>
+    <?= $this->formElement($contact_phone_no) ?>
+    <?= $this->formElementErrors()->render($contact_phone_no, ['class' => 'help-block']) ?>
+</div>
+
+<?php
+echo $this->formSubmit($submit);
+echo $this->formHidden($form->get('id'));
+echo $this->form()->closeTag();

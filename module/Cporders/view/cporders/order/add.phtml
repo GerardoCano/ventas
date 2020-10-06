@@ -1,0 +1,100 @@
+<?php
+
+$title = 'Add new Order';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<?php
+
+// This provides a default CSS class and placeholder text for the artist element:
+$ctm_id = $form->get('ctm_id');
+$ctm_id->setAttribute('class', 'form-control');
+
+// This provides a default CSS class and placeholder text for the title element:
+$date_order_placed = $form->get('date_order_placed');
+$date_order_placed->setAttribute('class', 'form-control');
+$date_order_placed->setAttribute('placeholder', 'Date Order Placed');
+
+// This provides a default CSS class and placeholder text for the artist element:
+$time_order_placed = $form->get('time_order_placed');
+$time_order_placed->setAttribute('class', 'form-control');
+$time_order_placed->setAttribute('placeholder', 'Time Order Placed');
+
+// This provides a default CSS class and placeholder text for the artist element:
+$total_product_no = $form->get('total_product_no');
+$total_product_no->setAttribute('class', 'form-control');
+$total_product_no->setAttribute('placeholder', 'Total Product No.');
+
+// This provides a default CSS class and placeholder text for the artist element:
+$order_completed = $form->get('order_completed');
+$order_completed->setAttribute('class', 'form-control');
+
+// This provides a default CSS class and placeholder text for the artist element:
+$date_order_completed = $form->get('date_order_completed');
+$date_order_completed->setAttribute('class', 'form-control');
+$date_order_completed->setAttribute('placeholder', 'Date Order Completed');
+
+// This provides a default CSS class and placeholder text for the artist element:
+$any_additional_info = $form->get('any_additional_info');
+$any_additional_info->setAttribute('class', 'form-control');
+$any_additional_info->setAttribute('placeholder', 'Any Addtional Information');
+
+// This provides CSS classes for the submit button:
+$submit = $form->get('submit');
+$submit->setAttribute('class', 'btn btn-primary');
+
+$form->setAttribute('action', $this->url('order', ['action' => 'add']));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+?>
+<?php // Wrap the elements in divs marked as form groups, and render the
+// label, element, and errors separately within 
+?>
+
+<div class="form-group">
+    <?= $this->formLabel($ctm_id) ?>
+    <?= $this->formElement($ctm_id) ?>
+    <?= $this->formElementErrors()->render($ctm_id, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($date_order_placed) ?>
+    <?= $this->formElement($date_order_placed) ?>
+    <?= $this->formElementErrors()->render($date_order_placed, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($time_order_placed) ?>
+    <?= $this->formElement($time_order_placed) ?>
+    <?= $this->formElementErrors()->render($time_order_placed, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($total_product_no) ?>
+    <?= $this->formElement($total_product_no) ?>
+    <?= $this->formElementErrors()->render($total_product_no, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($order_completed) ?>
+    <?= $this->formElement($order_completed) ?>
+    <?= $this->formElementErrors()->render($order_completed, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($date_order_completed) ?>
+    <?= $this->formElement($date_order_completed) ?>
+    <?= $this->formElementErrors()->render($date_order_completed, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($any_additional_info) ?>
+    <?= $this->formElement($any_additional_info) ?>
+    <?= $this->formElementErrors()->render($any_additional_info, ['class' => 'help-block']) ?>
+</div>
+
+<?php
+echo $this->formSubmit($submit);
+echo $this->formHidden($form->get('o_id'));
+echo $this->form()->closeTag();

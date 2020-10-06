@@ -1,0 +1,37 @@
+<?php
+
+$title = 'Customer';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<p>
+    <a href="<?= $this->url('customer', ['action' => 'add']) ?>">Add new customer</a>
+</p>
+
+<table class="table">
+<tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Street</th>
+    <th>City</th>
+    <th>Country</th>
+    <th>Postal Code</th>
+    <th>Contact Phone</th>
+    <th>Actions</th>
+</tr>
+<?php foreach ($customers as $customer) : ?>
+    <tr>
+        <td><?= $this->escapeHtml($customer->first_name) ?></td>
+        <td><?= $this->escapeHtml($customer->last_name) ?></td>
+        <td><?= $this->escapeHtml($customer->address_street) ?></td>
+        <td><?= $this->escapeHtml($customer->address_city) ?></td>
+        <td><?= $this->escapeHtml($customer->address_country) ?></td>
+        <td><?= $this->escapeHtml($customer->address_post_code) ?></td>
+        <td><?= $this->escapeHtml($customer->contact_phone_no) ?></td>
+        <td>
+            <a href="<?= $this->url('customer', ['action' => 'edit', 'id' => $customer->id]) ?>">Edit</a>
+            <a href="<?= $this->url('customer', ['action' => 'delete', 'id' => $customer->id]) ?>">Delete</a>
+        </td>
+    </tr>
+<?php endforeach; ?>
+</table>

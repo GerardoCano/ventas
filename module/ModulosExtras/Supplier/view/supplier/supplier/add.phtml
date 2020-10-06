@@ -1,0 +1,112 @@
+<?php
+
+$title = 'Add new Supplier';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<?php
+
+// This provides a default CSS class and placeholder text for the title element:
+$name = $form->get('name');
+$name->setAttribute('class', 'form-control');
+$name->setAttribute('placeholder', 'Supplier Name');
+
+// This provides a default CSS class and placeholder text for the artist element:
+$address_street = $form->get('address_street');
+$address_street->setAttribute('class', 'form-control');
+$address_street->setAttribute('placeholder', 'Supplier Address Street');
+
+// This provides a default CSS class and placeholder text for the artist element:
+$address_city = $form->get('address_city');
+$address_city->setAttribute('class', 'form-control');
+$address_city->setAttribute('placeholder', 'Supplier Address City');
+
+// This provides a default CSS class and placeholder text for the artist element:
+$address_country = $form->get('address_country');
+$address_country->setAttribute('class', 'form-control');
+$address_country->setAttribute('placeholder', 'Supplier Address Country');
+
+// This provides a default CSS class and placeholder text for the artist element:
+$address_post_code = $form->get('address_post_code');
+$address_post_code->setAttribute('class', 'form-control');
+$address_post_code->setAttribute('placeholder', 'Supplier Post Code');
+
+// This provides a default CSS class and placeholder text for the artist element:
+$phone_no = $form->get('phone_no');
+$phone_no->setAttribute('class', 'form-control');
+$phone_no->setAttribute('placeholder', 'Contact Phone Number');
+
+// This provides a default CSS class and placeholder text for the artist element:
+$fax_no = $form->get('fax_no');
+$fax_no->setAttribute('class', 'form-control');
+$fax_no->setAttribute('placeholder', 'Supplier Fax Number');
+
+// This provides a default CSS class and placeholder text for the artist element:
+$payment_terms = $form->get('payment_terms');
+$payment_terms->setAttribute('class', 'form-control');
+$payment_terms->setAttribute('placeholder', 'Payment Terms');
+
+// This provides CSS classes for the submit button:
+$submit = $form->get('submit');
+$submit->setAttribute('class', 'btn btn-primary');
+
+$form->setAttribute('action', $this->url('supplier', ['action' => 'add']));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+?>
+<?php // Wrap the elements in divs marked as form groups, and render the
+      // label, element, and errors separately within ?>
+
+<div class="form-group">
+    <?= $this->formLabel($name) ?>
+    <?= $this->formElement($name) ?>
+    <?= $this->formElementErrors()->render($name, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($address_street) ?>
+    <?= $this->formElement($address_street) ?>
+    <?= $this->formElementErrors()->render($address_street, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($address_city) ?>
+    <?= $this->formElement($address_city) ?>
+    <?= $this->formElementErrors()->render($address_city, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($address_country) ?>
+    <?= $this->formElement($address_country) ?>
+    <?= $this->formElementErrors()->render($address_country, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($address_post_code) ?>
+    <?= $this->formElement($address_post_code) ?>
+    <?= $this->formElementErrors()->render($address_post_code, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($phone_no) ?>
+    <?= $this->formElement($phone_no) ?>
+    <?= $this->formElementErrors()->render($phone_no, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($fax_no) ?>
+    <?= $this->formElement($fax_no) ?>
+    <?= $this->formElementErrors()->render($fax_no, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($payment_terms) ?>
+    <?= $this->formElement($payment_terms) ?>
+    <?= $this->formElementErrors()->render($payment_terms, ['class' => 'help-block']) ?>
+</div>
+
+<?php
+echo $this->formSubmit($submit);
+echo $this->formHidden($form->get('id'));
+echo $this->form()->closeTag();
